@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="555.0" style="-fx-background-color: #9a7d0a;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
+   <top>
+      <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/fesaLogo.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" cache="true" cacheHint="SPEED" contentDisplay="CENTER" prefHeight="16.0" prefWidth="273.0" text="ESTRUCTURA DE DATOS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/Unam3.png" />
+               </image>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets right="22.0" top="30.0" />
+         </opaqueInsets>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="243.0" prefWidth="442.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Conversión Infija a Posfija" />
+            <Button fx:id="btnConversion" mnemonicParsing="false" onAction="#abriConversion" text="Conversión" />
+            <Label text="Evaluar expresión Posfija" />
+            <Button fx:id="btnEvaluarP" mnemonicParsing="false" onAction="#abrirEvaluar" text="Evaluar" />
+            <Label text="Saber si una frase es Palíndromo" />
+            <Button fx:id="btnPalindromoP" mnemonicParsing="false" onAction="#abrirPalindromo" text="Palíndromo" />
+            <Label text="Encriptar un mensaje" />
+            <Button fx:id="btnEncriptarP" mnemonicParsing="false" onAction="#abrirEncriptar" text="Encriptar" />
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox alignment="CENTER" prefHeight="243.0" prefWidth="134.0" spacing="11.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnDocumentacion" mnemonicParsing="false" onAction="#documentacion" prefHeight="24.0" prefWidth="121.0" text="Documentacion" />
+            <Button fx:id="btnGithub" mnemonicParsing="false" onAction="#github" text="Github" />
+            <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#salir" prefHeight="24.0" prefWidth="63.0" text="Salir" />
+         </children>
+      </VBox>
+   </right>
+   <left>
+      <VBox alignment="CENTER" prefHeight="243.0" prefWidth="132.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
