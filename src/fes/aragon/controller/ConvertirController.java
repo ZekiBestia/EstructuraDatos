@@ -4,31 +4,50 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import fes.aragon.modelos.Modelos;
+import fes.aragon.posfijo.Ejemplo;
 
-public class ConvertirController extends BaseController{
+public class ConvertirController extends BaseController {
 
-    @FXML
-    private Button btnConvertir;
+	@FXML
+	private Button btnConvertir;
 
-    @FXML
-    private Button btnMenu;
+	@FXML
+	private Button btnMenu;
 
-    @FXML
-    private Button btnSalir;
+	@FXML
+	private Button btnSalir;
+	@FXML
+	private TextArea txtExpresion;
 
-    @FXML
-    void convertir(ActionEvent event) {
+	@FXML
+	private TextArea txtResultado;
 
-    }
+	@FXML
+	void convertir(ActionEvent event) throws Exception {
 
-    @FXML
-    void menu(ActionEvent event) {
-    	nuevaVentana("Inicio");
-    }
+		Ejemplo eje = new Ejemplo();
+		Modelos c = new Modelos();
+		c.setConvertir(this.txtExpresion.getText());
+		String pos = eje.toPosfijo(c.getConvertir());
+		if (this.txtExpresion.getText() == null) {
+			System.out.println("Error");
+		} else {
 
-    @FXML
-    void salir(ActionEvent event) {
-    	Platform.exit();
-    }
+			this.txtResultado.setText(pos);
+		}
+
+	}
+
+	@FXML
+	void menu(ActionEvent event) {
+		nuevaVentana("Inicio");
+	}
+
+	@FXML
+	void salir(ActionEvent event) {
+		Platform.exit();
+	}
 
 }
