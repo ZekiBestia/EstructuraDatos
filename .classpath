@@ -11,6 +11,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/zekibestia/ZekiProyectos/KIT.jar"/>
+	<classpathentry kind="lib" path="jar/KIT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
