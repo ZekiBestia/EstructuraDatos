@@ -53,7 +53,7 @@
       <VBox alignment="CENTER" prefHeight="183.0" prefWidth="289.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
             <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="111.0" text="Escriba la Frase:" />
-            <TextArea prefHeight="60.0" prefWidth="289.0" />
+            <TextArea fx:id="txtExpresion" prefHeight="60.0" prefWidth="289.0" />
             <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="46.0" prefWidth="289.0" spacing="40.0">
                <children>
                   <Button fx:id="btnProbar" mnemonicParsing="false" onAction="#probar" text="Probar" />
@@ -62,7 +62,7 @@
                   <Insets right="200.0" />
                </opaqueInsets>
             </HBox>
-            <TextArea editable="false" prefHeight="60.0" prefWidth="289.0" />
+            <TextArea fx:id="txtResultado" editable="false" prefHeight="60.0" prefWidth="289.0" />
          </children>
       </VBox>
    </center>

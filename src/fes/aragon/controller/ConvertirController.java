@@ -1,13 +1,12 @@
 package fes.aragon.controller;
 
+import fes.aragon.modelos.Modelos;
+import fes.aragon.problemas.Convertir;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import fes.aragon.modelos.Modelos;
-import fes.aragon.posfijo.Ejemplo;
-
 public class ConvertirController extends BaseController {
 
 	@FXML
@@ -27,10 +26,10 @@ public class ConvertirController extends BaseController {
 	@FXML
 	void convertir(ActionEvent event) throws Exception {
 
-		Ejemplo eje = new Ejemplo();
+		Convertir co = new Convertir();
 		Modelos c = new Modelos();
 		c.setConvertir(this.txtExpresion.getText());
-		String pos = eje.toPosfijo(c.getConvertir());
+		String pos = co.toPosfijo(c.getConvertir());
 		if (this.txtExpresion.getText() == null) {
 			System.out.println("Error");
 		} else {

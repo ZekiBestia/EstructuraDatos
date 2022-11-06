@@ -1,4 +1,4 @@
-package fes.aragon.pruebas;
+package fes.aragon.problemas;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -20,7 +20,20 @@ public class Evaluador {
 			if (caracter == '(') {
 				pila.insertar(caracter);
 			} else if (caracter == ')') {
-//				
+				while (true) {
+					if (pila.estaVacia()) {
+
+						System.out.println("Pila vacia");
+
+						return null;
+					}
+					char temp = pila.extraer().charValue();
+					if (temp == '(') {
+						break;
+					} else {
+						salida += " " + temp;
+					}
+				}
 			} else if (Character.isDigit(caracter)) {
 				salida += " " + caracter;
 				c++;
@@ -35,24 +48,22 @@ public class Evaluador {
 			} else if (caracter == '+' || caracter == '-' || caracter == '/' || caracter == '*' || caracter == '^') {
 				if (pila.estaVacia()) {
 					pila.insertar(caracter);
-				} else {//Evalua su prioridad o jerarquia con la prioridad en la pila
-                    int pe = prioridadEnExpresion(caracter);
-                    int pp = prioridadEnPila((char)pila.elementoSuperior());
+				} else {
 					while (true) {
-						if (pe > pp) {
+						if (esDeMayorPresedencia(caracter)) {
 							pila.insertar(caracter);
 							break;
 						} else {
-							salida +=   pila.extraer();
-							//
-							pila.insertar(caracter);
+							salida += " " + pila.extraer();
 						}
 					}
 				}
 			} else {
-				System.out.println("Caracter no valido");
+
+				System.out.println("Error caracter invalido");
+				return null;
 			}
-		} // fin del for
+		}
 		if (!pila.estaVacia()) {
 			do {
 				char temp = pila.extraer().charValue();
@@ -62,7 +73,6 @@ public class Evaluador {
 
 		return salida;
 	}
-
 
 	public boolean esDeMayorPresedencia(char caracter) throws Exception {
 		if (pila.estaVacia()) {
@@ -92,25 +102,10 @@ public class Evaluador {
 
 	public int Evaluar(String infijo) throws Exception {
 		String posfija = toPosfijo(infijo);
-		posfija = posfija.replaceAll("[()]", "");
-
-		System.out.println("La expresion postfija es: ");
-		System.out.println(" " + posfija + " ");
-
-		// Evaluamos transformamos la exprecion a posfijo
-
 		int operacion = evaluarPosfijo(posfija);
-		// campoResultado.setText(operacion+"");
-		System.out.println("La evaluación es: " + operacion + "");
 		return operacion;
 
 	}
-
-	/*
-	 * EVALUAR EXPRESION POSTIJA
-	 * 
-	 * 
-	 */
 
 	public int evaluarPosfijo(String posfijo) {
 		ArrayList<String> token = new ArrayList<String>();
@@ -121,10 +116,10 @@ public class Evaluador {
 		}
 
 		if (token.size() == 1) {
-			return Integer.parseInt(token.get(0));
+			//return Integer.parseInt(token.get(0));
 		}
 		int c = 0;
-		System.out.println(token.toString()+"\n");
+//		System.out.println(token.toString() + "\n");
 		while (token.size() != 1) {
 
 			String operador = token.get(c);
@@ -142,7 +137,7 @@ public class Evaluador {
 						token.add(c - 2, suma);
 						c = 0;
 					} catch (Exception e) {
-						System.out.println("Error al comvertir un operando\n"+e);
+						System.out.println("Error al comvertir un operando\n" + e);
 						return 0;
 					}
 				} else if (operador.equals("-")) {
@@ -151,7 +146,7 @@ public class Evaluador {
 						token.add(c - 2, resta);
 						c = 0;
 					} catch (Exception e) {
-						System.out.println("Error al comvertir un operando\n"+e);
+						System.out.println("Error al comvertir un operando\n" + e);
 						return 0;
 					}
 				} else if (operador.equals("*")) {
@@ -160,7 +155,7 @@ public class Evaluador {
 						token.add(c - 2, multiplicacion);
 						c = 0;
 					} catch (Exception e) {
-						System.out.println("Error al comvertir un operando\n"+e);
+						System.out.println("Error al comvertir un operando\n" + e);
 						return 0;
 					}
 				} else if (operador.equals("/")) {
@@ -169,7 +164,7 @@ public class Evaluador {
 						token.add(c - 2, divicion);
 						c = 0;
 					} catch (Exception e) {
-						System.out.println("Error al comvertir un operando\n"+e);
+						System.out.println("Error al comvertir un operando\n" + e);
 						return 0;
 					}
 				} else {
@@ -178,77 +173,62 @@ public class Evaluador {
 						token.add(c - 2, potencia);
 						c = 0;
 					} catch (Exception e) {
-						System.out.println("Error al comvertir un operando\n"+e);
+						System.out.println("Error al comvertir un operando\n" + e);
 						return 0;
 					}
 				}
-				// areaTexto.append(token.toString()+"\n");
-				System.out.println(token.toString()+"\n");
+				
 			} else {
 				c++;
 			}
 		}
 
 		try {
+			/*
+			 * 
+			 * Retorna el resultado
+			 */
 			return Integer.parseInt(token.get(0));
 		} catch (Exception e) {
-			System.out.println("Error al parsear el resultado\n"+e);
+			System.out.println("Error al parsear el resultado\n" + e);
 			return 0;
-			
+
 		}
 
 	}
-	
-	
-	
-	
-	/// siisisis
-	
-	  //Metodo para evaluar la jerarquia de operaciones de la expresion
-    private static int prioridadEnExpresion (char operador)
-    {
-         if (operador == '^') 
-         {
-             return 4;
-         }
-         if (operador == '*' || operador == '/') 
-         {
-             return 2;
-         }
-         if (operador == '+' || operador == '-') 
-         {
-             return 1;
-         }
-         if (operador == '(' ) 
-         {
-             return 5;
-         }
-         return 0;
-    }
-    
-    //Metodo para evaluar la jerarquia de operaciones en la pila
-    private static int prioridadEnPila (char operador)
-    {
-         if (operador == '^') 
-         {
-             return 3;
-         }
-         if (operador == '*' || operador == '/') 
-         {
-             return 1;
-         }
-         if (operador == '+' || operador == '-') 
-         {
-             return 2;
-         }
-         if (operador == '(' ) 
-         {
-             return 0;
-         }
-         return 0;
-    }
+
+	@SuppressWarnings("unused")
+	private static int prioridadEnExpresion(char operador) {
+		if (operador == '^') {
+			return 4;
+		}
+		if (operador == '*' || operador == '/') {
+			return 2;
+		}
+		if (operador == '+' || operador == '-') {
+			return 1;
+		}
+		if (operador == '(') {
+			return 5;
+		}
+		return 0;
+	}
+
+	@SuppressWarnings("unused")
+	private static int prioridadEnPila(char operador) {
+		if (operador == '^') {
+			return 3;
+		}
+		if (operador == '*' || operador == '/') {
+			return 1;
+		}
+		if (operador == '+' || operador == '-') {
+			return 2;
+		}
+		if (operador == '(') {
+			return 0;
+		}
+		return 0;
+	}
 
 }
-
-
-

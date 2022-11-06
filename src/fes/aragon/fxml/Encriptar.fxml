@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="555.0" style="-fx-background-color: #9a7d0a;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.PalindromoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="555.0" style="-fx-background-color: #9a7d0a;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.EncriptarController">
    <top>
       <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -31,7 +31,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="66.0" prefWidth="253.0" text="SABER SI UNA FRASE ES PALINDROMO" />
+                  <Label prefHeight="66.0" prefWidth="155.0" text="     ENCRIPTACIÓN" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -52,11 +52,11 @@
    <center>
       <VBox alignment="CENTER" prefHeight="183.0" prefWidth="289.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="111.0" text="Escriba la Frase:" />
-            <TextArea fx:id="txtExpresion" prefHeight="60.0" prefWidth="289.0" />
+            <Label contentDisplay="CENTER" text="Escriba el texto a encriptar" />
+            <TextArea fx:id="txtMensaje" prefHeight="60.0" prefWidth="289.0" />
             <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="46.0" prefWidth="289.0" spacing="40.0">
                <children>
-                  <Button fx:id="btnProbar" mnemonicParsing="false" onAction="#probar" text="Probar" />
+                  <Button fx:id="btnConvertir" mnemonicParsing="false" onAction="#convertir" text="Encriptar" />
                </children>
                <opaqueInsets>
                   <Insets right="200.0" />

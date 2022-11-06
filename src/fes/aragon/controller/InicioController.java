@@ -1,11 +1,7 @@
 package fes.aragon.controller;
 
-import java.awt.Desktop;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
-
-import fes.aragon.modelos.Modelos;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,7 +37,7 @@ public class InicioController extends BaseController {
 
 	@FXML
 	void abrirEncriptar(ActionEvent event) {
-		//this.nuevaVentana("");
+		this.nuevaVentana("Encriptar");
 	}
 
 	@FXML
@@ -56,33 +52,16 @@ public class InicioController extends BaseController {
 
 	@FXML
 	void documentacion(ActionEvent event) {
-		Modelos c = new Modelos();
-		String conv = "hola";
-		c.setConvertir("SI");
-		System.out.println(c.getConvertir());
+		enlace("https://www.youtube.com/");
 	}
 	  @FXML
 	    void salir(ActionEvent event) {
 		  Platform.exit();
 	    }
 
-	
-
-
 	@FXML
 	void github(ActionEvent event) throws IOException, URISyntaxException {
-		String enlace = "https://www.youtube.com/";
-		if (java.awt.Desktop.isDesktopSupported()) {
-			java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
-
-			if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
-				try {
-					java.net.URI uri = new java.net.URI(enlace);
-					desktop.browse(uri);
-				} catch (URISyntaxException | IOException ex) {
-				}
-			}
-		}
+		enlace("https://github.com/ZekiBestia/EstructuraDatos");
 	}
 
 }
