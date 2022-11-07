@@ -11,7 +11,8 @@ public class ConvertirController extends BaseController {
 
 	@FXML
 	private Button btnConvertir;
-
+	  @FXML
+	    private Button btnLimpiar;
 	@FXML
 	private Button btnMenu;
 
@@ -29,15 +30,20 @@ public class ConvertirController extends BaseController {
 		Convertir co = new Convertir();
 		Modelos c = new Modelos();
 		c.setConvertir(this.txtExpresion.getText());
-		String pos = co.toPosfijo(c.getConvertir());
-		if (this.txtExpresion.getText() == null) {
-			System.out.println("Error");
+		String vacio = "";
+		if (this.txtExpresion.getText().equals(vacio)) {
+			this.mensaje("ERROR","Sin contenido", "Por favor llenar la caja de texto con datos correctos");
 		} else {
-
+			String pos = co.toPosfijo(c.getConvertir());
 			this.txtResultado.setText(pos);
 		}
 
 	}
+	@FXML
+    void limpiar(ActionEvent event) {
+		this.txtExpresion.setText("");
+		this.txtResultado.setText(null);
+    }
 
 	@FXML
 	void menu(ActionEvent event) {

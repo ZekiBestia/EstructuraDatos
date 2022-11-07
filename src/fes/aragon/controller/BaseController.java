@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -28,7 +30,6 @@ public class BaseController {
 	}
 
 	public void enlace(String enlace) {
-		enlace = "https://www.youtube.com/";
 		if (java.awt.Desktop.isDesktopSupported()) {
 			java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
 
@@ -40,6 +41,17 @@ public class BaseController {
 				}
 			}
 		}
+		
+		
+
+	}
+	public void mensaje(String titulo, String encabezado, String contenido) {
+		Alert alerta;
+		alerta = new Alert(AlertType.INFORMATION);
+		alerta.setTitle(titulo);
+		alerta.setHeaderText(encabezado);
+		alerta.setContentText(contenido);
+		alerta.showAndWait();
 
 	}
 }

@@ -52,7 +52,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="183.0" prefWidth="289.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="146.0" text="Escriba la Expresion" />
+            <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="174.0" text="Escriba la Expresion Infija" />
             <Label text="Convierte y Evalua" />
             <TextArea fx:id="txtExpresion" prefHeight="60.0" prefWidth="289.0" />
             <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="46.0" prefWidth="289.0" spacing="40.0">
@@ -63,7 +63,14 @@
                   <Insets right="200.0" />
                </opaqueInsets>
             </HBox>
-            <TextArea fx:id="txtResultado" editable="false" prefHeight="60.0" prefWidth="289.0" />
+            <Label prefHeight="16.0" prefWidth="197.0" text="Posfija                     Resultado" />
+            <HBox prefHeight="31.0" prefWidth="289.0" spacing="20.0">
+               <children>
+                  <TextArea fx:id="txtposfija" editable="false" maxWidth="-Infinity" prefHeight="38.0" prefWidth="154.0" />
+                  <TextArea fx:id="txtResultado" editable="false" prefHeight="38.0" prefWidth="158.0" />
+               </children>
+            </HBox>
+            <Button fx:id="btnLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
          </children>
       </VBox>
    </center>
